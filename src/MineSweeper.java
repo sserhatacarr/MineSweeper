@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class MineSweeper {
-    // Defined variables
+    //1- Defined class and variables
     int rowNumber, colNumber;
     int[][] board, plan;
     boolean check = true;
@@ -18,7 +18,7 @@ public class MineSweeper {
 
     }
 
-    public void placedMines() { // Function that randomly places mines
+    public void placedMines() { // 3-Function that randomly places mines
         Random random = new Random();
         int placedMines = 0;
         int mineCount = (rowNumber * colNumber) / 4;
@@ -48,11 +48,11 @@ public class MineSweeper {
         int size = rowNumber * colNumber;
         placedMines();
 
-        System.out.println("Mines Coordinates");        // Mines coordinates if we want to check it.
+        System.out.println("Mines Coordinates");        // 4-Mines coordinates if we want to check it.
         displayBoard(plan);
 
         System.out.println("Game has started !");
-        while (check) {
+        while (check) {  // 5- Get coordinates from the user and check
             displayBoard(board);
             System.out.print("Row : ");
             row = scan.nextInt();
@@ -63,7 +63,7 @@ public class MineSweeper {
                 System.out.println("Enter coordinates in valid range!");
                 continue;
             }
-            // // If the cell has been visited before, warn the user
+             // If the cell has been visited before, warn the user
             if (cellVisited[row][col]) {
                 System.out.println("You have already visited this cell.");
                 continue;
@@ -79,17 +79,17 @@ public class MineSweeper {
                 step++;
                 if (step == size - (size / 4)) {
                     System.out.println("You achieve it. You didn't step on any mines.");
-                    break;
+                    break;  // 7- Win check ?
                 }
             } else {
                 check = false;
-                System.out.println("You stepped on a mine! \n" +
+                System.out.println("You stepped on a mine! \n" +   // 6 - a Game Over ?
                         "Game Over!");
             }
         }
     }
 
-    public void makeMove(int row, int col) {    // Controls 8 directions and increases value if there are mines around
+    public void makeMove(int row, int col) {    // 6 - b Controls 8 directions and increases value if there are mines around
 
         if (plan[row][col] == 0) {
             if ((col > 0) && (plan[row][col - 1] == -1)) {                                          // Check Left
@@ -122,7 +122,7 @@ public class MineSweeper {
         }
 
     }
-    public void displayBoard(int[][] matrix) {  // Displays the game board, representing cells with appropriate symbols
+    public void displayBoard(int[][] matrix) {  // 4-Displays the game board, representing cells with appropriate symbols
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 if (matrix[i][j] == -1) {

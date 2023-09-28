@@ -7,7 +7,7 @@ public class Main {
         System.out.println("Welcome to MineSweeper Game !");
         Scanner scan = new Scanner(System.in);
 
-        // Loop until the user enters valid values
+        // 3 - Loop until the user enters valid values
         while (true) {
             System.out.print("Enter the number of rows (between 2 and 16): ");
             rows = scan.nextInt();
